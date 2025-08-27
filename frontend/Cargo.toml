@@ -1,0 +1,27 @@
+[package]
+name = "frontend"
+version = "0.1.0"
+authors = ["X1Vi <gundeep477@gmail.com>"]
+edition = "2021"
+
+[dependencies]
+dioxus = { version = "0.6.0", features = ["router", "mobile"] }
+tokio = { version = "1.47.1", features = ["full"] }
+reqwest = { version = "0.12.23", default-features = false, features = [
+  "rustls-tls",
+  "charset",
+  "http2",
+  "json"
+] }
+tracing-subscriber = "0.3.19"
+tracing-android = "0.2.0"
+tracing = "0.1.41"
+
+[features]
+default = ["mobile"]
+web = ["dioxus/web"]
+desktop = ["dioxus/desktop"]
+mobile = ["dioxus/mobile"]
+
+[profile.android-dev]
+inherits = "dev"
